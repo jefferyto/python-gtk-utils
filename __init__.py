@@ -3,7 +3,7 @@
 # __init__.py
 # This file is part of python-gtk-utils
 #
-# Copyright (C) 2013 Jeffery To <jeffery.to@gmail.com>
+# Copyright (C) 2013, 2017 Jeffery To <jeffery.to@gmail.com>
 # https://github.com/jefferyto/python-gtk-utils
 #
 # This program is free software: you can redistribute it and/or modify

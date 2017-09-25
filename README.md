@@ -35,7 +35,7 @@ git subtree pull --prefix=path/to/code/utils --squash python-gtk-utils master
 
 ## License ##
 
-Copyright &copy; 2013 Jeffery To <jeffery.to@gmail.com>
+Copyright &copy; 2013, 2017 Jeffery To <jeffery.to@gmail.com>
 
 Available under GNU General Public License version 3
 

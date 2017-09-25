@@ -19,6 +19,18 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+from gi.repository import GObject
+
+
+# from future.utils
+
+def _iteritems(obj, **kwargs):
+	func = getattr(obj, 'iteritems', None)
+	if not func:
+		func = obj.items
+	return func(**kwargs)
+
+
 # signal handlers
 
 def _get_handler_ids_name(ns):
@@ -64,4 +76,50 @@ def block_handlers(ns, target):
 def unblock_handlers(ns, target):
 	for handler_id in _get_handler_ids(ns, target):
 		target.handler_unblock(handler_id)
+
+
+# bindings
+
+def _get_bindings_name(ns):
+	return ns.__class__.__name__ + 'Bindings'
+
+def _get_bindings(ns, source, target):
+	name = _get_bindings_name(ns)
+	binding_map = getattr(source, name, {})
+	return binding_map[target] if target in binding_map else []
+
+def _set_bindings(ns, source, target, bindings):
+	name = _get_bindings_name(ns)
+	binding_map = getattr(source, name, {})
+	binding_map[target] = bindings
+	setattr(source, name, binding_map)
+
+def _del_bindings(ns, source, target):
+	name = _get_bindings_name(ns)
+	binding_map = getattr(source, name, {})
+	if target in binding_map:
+		del binding_map[target]
+	if not binding_map and hasattr(source, name):
+		delattr(source, name)
+
+def create_bindings(ns, source, target, property_map, flags,
+		transform_to=None, transform_from=None, user_data=None):
+	bindings = _get_bindings(ns, source, target)
+
+	for (source_property, target_property) in _iteritems(property_map):
+		binding = source.bind_property(
+			source_property,
+			target, target_property,
+			flags,
+			transform_to, transform_from, user_data
+		)
+		bindings.append(binding)
+
+	_set_bindings(ns, source, target, bindings)
+
+def release_bindings(ns, source, target):
+	for binding in _get_bindings(ns, source, target):
+		GObject.Binding.unbind(binding)
+
+	_del_bindings(ns, source, target)
 

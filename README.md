@@ -1,4 +1,4 @@
-# python-gtk-utils #
+# python-gtk-utils
 
 A collection of utilities ready to be `git subtree`-ed into a Python
 GTK+ project  
@@ -8,7 +8,7 @@ GTK+ project
 All bug reports, feature requests and miscellaneous comments are welcome
 at the [project issue tracker][].
 
-## Installation ##
+## Installation
 
 Use `git subtree` to pull this sub-project into your project:
 
@@ -29,11 +29,11 @@ Pull for updates:
 git subtree pull --prefix=path/to/code/utils --squash python-gtk-utils master
 ```
 
-## Documentation ##
+## Documentation
 
 ...would be a good idea ;-)
 
-## License ##
+## License
 
 Copyright &copy; 2013, 2017 Jeffery To <jeffery.to@gmail.com>
 

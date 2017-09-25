@@ -19,12 +19,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# signal handlers
+
 def _get_handler_ids_name(ns):
 	return ns.__class__.__name__ + 'HandlerIds'
 
 def _get_handler_ids(ns, target):
 	name = _get_handler_ids_name(ns)
-	return getattr(target, name) if hasattr(target, name) else []
+	return getattr(target, name, [])
 
 def _set_handler_ids(ns, target, ids):
 	name = _get_handler_ids_name(ns)
@@ -42,7 +44,9 @@ def connect_handlers(ns, target, signals, prefix_or_fn, *args):
 		if hasattr(prefix_or_fn, '__call__'):
 			fn = prefix_or_fn
 		else:
-			fn = getattr(ns, 'on_%s_%s' % (prefix_or_fn, signal.replace('-', '_').replace('::', '_')))
+			fn_name = signal.replace('-', '_').replace('::', '_')
+			fn = getattr(ns, 'on_%s_%s' % (prefix_or_fn, fn_name))
+
 		handler_ids.append(target.connect(signal, fn, *args))
 
 	_set_handler_ids(ns, target, handler_ids)
@@ -60,3 +64,4 @@ def block_handlers(ns, target):
 def unblock_handlers(ns, target):
 	for handler_id in _get_handler_ids(ns, target):
 		target.handler_unblock(handler_id)
+

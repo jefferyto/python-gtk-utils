@@ -123,3 +123,15 @@ def release_bindings(ns, source, target):
 
 	_del_bindings(ns, source, target)
 
+
+# debugging helpers
+
+def debug_str(value):
+	if isinstance(value, GObject.Object):
+		# hash(value) is the memory address of the underlying gobject
+		result = value.__gtype__.name + ': ' + hex(hash(value))
+	else:
+		result = str(value)
+
+	return result
+

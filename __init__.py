@@ -102,18 +102,29 @@ def _del_bindings(ns, source, target):
 	if not binding_map and hasattr(source, name):
 		delattr(source, name)
 
-def create_bindings(ns, source, target, property_map, flags,
+def create_bindings(ns, source, target, properties, flags,
 		transform_to=None, transform_from=None, user_data=None):
 	bindings = _get_bindings(ns, source, target)
 
-	for (source_property, target_property) in _iteritems(property_map):
-		binding = source.bind_property(
-			source_property,
-			target, target_property,
-			flags,
-			transform_to, transform_from, user_data
-		)
-		bindings.append(binding)
+	if isinstance(properties, dict):
+		for (source_property, target_property) in _iteritems(properties):
+			binding = source.bind_property(
+				source_property,
+				target, target_property,
+				flags,
+				transform_to, transform_from, user_data
+			)
+			bindings.append(binding)
+
+	else:
+		for prop in properties:
+			binding = source.bind_property(
+				prop,
+				target, prop,
+				flags,
+				transform_to, transform_from, user_data
+			)
+			bindings.append(binding)
 
 	_set_bindings(ns, source, target, bindings)
 

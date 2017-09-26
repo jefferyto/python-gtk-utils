@@ -56,8 +56,7 @@ def connect_handlers(ns, target, signals, prefix_or_fn, *args):
 		if hasattr(prefix_or_fn, '__call__'):
 			fn = prefix_or_fn
 		else:
-			fn_name = signal.replace('-', '_').replace('::', '_')
-			fn = getattr(ns, 'on_%s_%s' % (prefix_or_fn, fn_name))
+			fn = getattr(ns, 'on_%s_%s' % (prefix_or_fn, to_name(signal)))
 
 		handler_ids.append(target.connect(signal, fn, *args))
 
@@ -135,7 +134,10 @@ def release_bindings(ns, source, target):
 	_del_bindings(ns, source, target)
 
 
-# debugging helpers
+# misc
+
+def to_name(value):
+	return str(value).replace('-', '_').replace('::', '_')
 
 def debug_str(value):
 	if isinstance(value, GObject.Object):

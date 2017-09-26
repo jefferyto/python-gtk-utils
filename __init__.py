@@ -101,8 +101,7 @@ def _del_bindings(ns, source, target):
 	if not binding_map and hasattr(source, name):
 		delattr(source, name)
 
-def create_bindings(ns, source, target, properties, flags,
-		transform_to=None, transform_from=None, user_data=None):
+def create_bindings(ns, source, target, properties, *args):
 	bindings = _get_bindings(ns, source, target)
 
 	if isinstance(properties, dict):
@@ -110,8 +109,7 @@ def create_bindings(ns, source, target, properties, flags,
 			binding = source.bind_property(
 				source_property,
 				target, target_property,
-				flags,
-				transform_to, transform_from, user_data
+				*args
 			)
 			bindings.append(binding)
 

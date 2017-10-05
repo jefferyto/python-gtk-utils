@@ -142,7 +142,7 @@ def debug_str(value):
 		# hash(value) is the memory address of the underlying gobject
 		result = value.__gtype__.name + ': ' + hex(hash(value))
 	else:
-		result = str(value)
+		result = value
 
 	return result
 

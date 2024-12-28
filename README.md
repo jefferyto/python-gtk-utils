@@ -5,8 +5,11 @@ GTK+ project
 <https://github.com/jefferyto/python-gtk-utils>  
 0.3.1-dev
 
-All bug reports, feature requests and miscellaneous comments are welcome
-at the [project issue tracker][].
+All bug reports, feature requests, and miscellaneous comments are
+welcome at the [project issue tracker].
+
+Be sure to watch the project on GitHub to receive notifications for new
+releases.
 
 [project issue tracker]: https://github.com/jefferyto/python-gtk-utils/issues
 

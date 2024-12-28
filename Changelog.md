@@ -1,5 +1,7 @@
 # Changelog
 
+## [0.3.1-dev][Unreleased] - Unreleased
+
 ## [0.3.0] - 2024-12-29
 * Changed license to GPL-2.0-or-later
 
@@ -11,5 +13,6 @@
 * Initial release
 
 
+[Unreleased]: https://github.com/jefferyto/python-gtk-utils/compare/0.3.0...main
 [0.3.0]: https://github.com/jefferyto/python-gtk-utils/compare/0.2.0...0.3.0
 [0.2.0]: https://github.com/jefferyto/python-gtk-utils/compare/0.1.0...0.2.0

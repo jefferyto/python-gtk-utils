@@ -1,6 +1,7 @@
 # Changelog
 
 ## [0.3.0-dev][Unreleased] - Unreleased
+* Changed license to GPL-2.0-or-later
 
 ## [0.2.0] - 2017-10-13
 * Added create_bindings / release_bindings

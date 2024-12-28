@@ -37,7 +37,7 @@ git subtree pull --prefix=path/to/code/utils --squash python-gtk-utils main
 
 Copyright &copy; 2013, 2017 Jeffery To <jeffery.to@gmail.com>
 
-Available under GNU General Public License version 3
+Available under GNU General Public License version 2 or later
 
 
 [project issue tracker]: https://github.com/jefferyto/python-gtk-utils/issues

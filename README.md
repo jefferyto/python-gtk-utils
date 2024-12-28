@@ -8,6 +8,8 @@ GTK+ project
 All bug reports, feature requests and miscellaneous comments are welcome
 at the [project issue tracker][].
 
+[project issue tracker]: https://github.com/jefferyto/python-gtk-utils/issues
+
 ## Installation
 
 Use `git subtree` to pull this sub-project into your project:
@@ -38,6 +40,3 @@ git subtree pull --prefix=path/to/code/utils --squash python-gtk-utils main
 Copyright &copy; 2013, 2017 Jeffery To <jeffery.to@gmail.com>
 
 Available under GNU General Public License version 2 or later
-
-
-[project issue tracker]: https://github.com/jefferyto/python-gtk-utils/issues

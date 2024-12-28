@@ -3,7 +3,7 @@
 A collection of utilities ready to be `git subtree`-ed into a Python
 GTK+ project  
 <https://github.com/jefferyto/python-gtk-utils>  
-0.3.0-dev
+0.3.0
 
 All bug reports, feature requests and miscellaneous comments are welcome
 at the [project issue tracker][].
